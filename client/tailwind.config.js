@@ -3,11 +3,12 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [ require('flowbite/plugin'),],
 }
 
 /*give path in content:[] to scan all this file for giving Tailwind css template*/
