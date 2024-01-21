@@ -2,6 +2,7 @@ import express from 'express'; // as we made type ->module we can use import ins
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js';
 
 dotenv.config(); //to use env file first instal and config dotenv
 const app=express();
@@ -14,8 +15,13 @@ mongoose.connect(process.env.MONGO).then(() => {
     console.log(err);
   });
 
+  app.use(express.json()); //configuring the Express application to use the built-in middleware express.json().
+                          //this middleware parses the JSON data in the requestbody and makes it available in the req.body
+
+
   //all routes
-  app.use(userRoutes);
+  app.use('/api/user',userRoutes);
+  app.use('/api/auth',authRoutes);
 
 
 
