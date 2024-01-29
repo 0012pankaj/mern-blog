@@ -2,13 +2,16 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { FaMoon,FaSun } from 'react-icons/fa';
+import { useSelector,useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/theme/themeSlice';
+
 
 export default function Header() {
     const path = useLocation().pathname;  //assign current page path in path variable help in sowing "active" nav icon 
       const { currentUser } = useSelector((state) => state.user); //fetch curent user detail from redux store state to show info and profile
-
+      const dispatch = useDispatch();
+      const { theme } = useSelector((state) => state.theme);
     return (
     <Navbar className='border-b-2'>
 
@@ -40,8 +43,13 @@ export default function Header() {
 
        {/* Sign in button and display colorchange button "md:order-2" order in flex  */}
       <div className='flex gap-2 md:order-2'>
-        <Button className='w-12 h-10 ' color='gray' pill>
-          <FaMoon /> {/* moon icon */}
+      <Button
+          className='w-12 h-10 hidden sm:inline'
+          color='gray'
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
         </Button>
         {/* if user login than show detail an profile pic else show Sign in button */}
         {currentUser ? (

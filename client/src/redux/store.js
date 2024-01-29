@@ -2,10 +2,12 @@ import { configureStore,combineReducers } from '@reduxjs/toolkit';
 import userReducer from './user/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import themeReducer from './theme/themeSlice';
  //use redux-persist for  store the state in a local storage so that on refresh page we dont loose our state
  //create root reducer for 1 for all reducer
 const rootReducer = combineReducers({
   user: userReducer,
+  theme:themeReducer,
 });
 
 const persistConfig = {

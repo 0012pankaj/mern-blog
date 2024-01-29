@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     profilePicture: {
         type: String,
         default:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_WtXx8cL9YaKXi7afGhBRRdMhOwJbuIM16UPmHX0yg&s',
+          "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg",
       },
     }, {timestamps: true} 
 );
