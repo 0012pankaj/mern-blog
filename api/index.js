@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config(); //to use env file first instal and config dotenv
 const app=express();
@@ -17,7 +18,7 @@ mongoose.connect(process.env.MONGO).then(() => {
 
   app.use(express.json()); //configuring the Express application to use the built-in middleware express.json().
                           //this middleware parses the JSON data in the requestbody and makes it available in the req.body
-
+  app.use(cookieParser());
 
   //all routes
   app.use('/api/user',userRoutes);
